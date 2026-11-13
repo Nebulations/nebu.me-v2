@@ -1,0 +1,66 @@
+---
+
+---
+
+<nav>
+    <ul>
+        <li class="navigation"><a class="navigation-link" href="/">Home</a></li>
+        <li class="navigation"><a class="navigation-link" href="/projects">Projects</a></li>
+        <li class="navigation"><a class="navigation-link" href="/timeline">Timeline</a></li>
+    </ul>
+</nav>
+
+<style>
+    nav {
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        width: 100%;
+        height: 80px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    ul {
+        list-style-type: none;
+        display: flex;
+        gap: 48px;
+    }
+
+    .navigation-link {
+        position: relative;
+        display: inline-block;
+        color: rgba(235, 235, 235, 0.5);
+        font-size: 18pt;
+        font-weight: bolder;
+        text-decoration: none;
+        cursor: pointer;
+        transition: color 0.3s ease;
+    }
+
+    .navigation-link::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+        width: 100%;
+        height: 2px;
+        background-color: rgb(235, 235, 235);
+
+        transform: scaleX(0);
+        transform-origin: center;
+        transition: transform 0.2s ease-out;
+    }
+
+    .navigation:hover > .navigation-link {
+        color: rgb(235, 235, 235);
+    }
+
+    .navigation:hover > .navigation-link::after {
+        transform: scaleX(1);
+    }
+
+</style>

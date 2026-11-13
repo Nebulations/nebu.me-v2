@@ -1,11 +1,30 @@
 ---
-import Welcome from '../components/Welcome.astro';
+import Navbar from '../components/Navbar.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
-	<Welcome />
+	<Navbar />
+	<div class="main-container">
+		<div class="inner-container">
+			
+		</div>
+	</div>
 </Layout>
+
+<style>
+	.main-container {
+		height: 70%;
+		width: 100%;
+
+		background: rgb(12, 12, 12);
+		background-image: radial-gradient(rgb(40, 40, 40) 20%, transparent 21%);
+		background-size: 10px 10px;
+		mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgb(0, 0, 0, 0.1) 100%);
+		border-radius: 0 0 20% 20%;
+	}
+
+	.inner-container {
+		color: white;
+	}
+</style>
