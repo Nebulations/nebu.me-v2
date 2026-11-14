@@ -1,11 +1,27 @@
 ---
 import githubIcon from '../assets/github.png'
+import emailIcon from '../assets/email.png'
+
+const socials = [
+    {
+        alt: "Github",
+        href: "https://github.com/Nebulations",
+        src: githubIcon.src
+    },
+    {
+        alt: "Email",
+        href: "mailto:contact@nebu.me",
+        src: emailIcon.src
+    }
+]
 ---
 
 <div class="socials">
-    <a class="social" href="https://github.com/Nebulations" target="_blank">
-        <img src={githubIcon.src} height="32px" width="32px" alt="Github">
-    </a>
+    {socials.map(social => (
+        <a class="social" href={social.href} target="_blank">
+            <img src={social.src} alt={social.alt}>
+        </a>
+    ))}
 </div>
 
 <style>
@@ -22,5 +38,17 @@ import githubIcon from '../assets/github.png'
         display: flex;
         justify-content: space-evenly;
         align-items: center;
+        gap: 15px;
+    }
+
+    .social {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .social img {
+        height: 32px;
+        width: 32px;
     }
 </style>
