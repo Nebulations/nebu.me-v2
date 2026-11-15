@@ -1,6 +1,8 @@
 ---
 import Navbar from '../components/Navbar.astro';
 import Socials from '../components/Socials.astro'
+
+const { tab } = Astro.props
 ---
 
 <!DOCTYPE html>
@@ -12,7 +14,7 @@ import Socials from '../components/Socials.astro'
 		<title>Nebula — Java Developer</title>
 	</head>
 	<body>
-		<Navbar />
+		<Navbar tab={tab} />
 		<div class="bg-container" />
 		{/* This is where the main content will live. */}
 		<div class="content">
