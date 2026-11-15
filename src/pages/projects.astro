@@ -13,7 +13,7 @@ const projects = Object.values(import.meta.glob("../projects/*.md", { eager: tru
 	<div class="main-container">
 		<div class="content">
 			<div class="projects">
-				{projects.map(project => (
+				{projects.map((project: any) => (
 					<Project
 						title={project.frontmatter.title}
 						desc={project.frontmatter.desc}

@@ -6,12 +6,15 @@ const { title, desc, preview } = Astro.props
     <h1 class="title">{title}</h1>
     <p class="description">{desc}</p>
     <div class="preview-container">
-        <img src=`/previews/${preview}` alt=`Preview of ${title}`>
+        <img src=`/previews/${preview}` alt=`Preview of ${title}` draggable="false">
     </div>
     <div class="project-showcase">
         <div class="project-showcase-content">
             <div class="close-showcase">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" height="40px" width="40px" fill="rgb(235, 235, 235)"><path d="M10.47,31.47L8.53,29.53L18.06,20L8.53,10.47l1.94-1.94L20,18.06l9.53-9.53l1.94,1.94L21.94,20l9.53,9.53l-1.94,1.94L20,21.94l-9.53,9.53Z"/></svg>
+            </div>
+            <div class="inner-preview-container">
+                <img src=`/previews/${preview}` alt=`Preview of ${title}` draggable="false">
             </div>
             <h1 class="title">{title}</h1>
             <p class="inner description">{desc}</p>
@@ -33,8 +36,7 @@ const { title, desc, preview } = Astro.props
 
         height: 400px;
         width: 600px;
-        
-        transition: ease-in-out 0.2s;
+
         cursor: pointer;
     }
 
@@ -46,7 +48,7 @@ const { title, desc, preview } = Astro.props
         font-size: 22pt;
         color: rgb(235, 235, 235);
         text-align: center;
-        margin: 12px 12px 0px 12px;
+        margin-top: 8px;
     }
 
     .preview-container {
@@ -73,7 +75,10 @@ const { title, desc, preview } = Astro.props
 
 {/* Project showcase styling */}
 <style>
+    /* Shadow effect on the background */
     .project-showcase {
+        display: none;
+
         position: fixed;
         z-index: 1;
         top: 0;
@@ -81,39 +86,86 @@ const { title, desc, preview } = Astro.props
 
         height: 100%;
         width: 100%;
-        background: rgb(0, 0, 0, 0.4);
+        background: rgb(0, 0, 0, 0.6);
 
-        display: flex;
-        justify-content: center;
+        flex-direction: column;
         align-items: center;
+        overflow-y: auto;
+    }
+
+    .project-showcase.visible {
+        display: flex;
+        animation: fade-in 0.5s;
+    }
+
+    .project-showcase::before {
+        content: "";
+        flex: 1 1 0%;
+        min-height: 120px;
+    }
+
+    .project-showcase::after {
+        content: "";
+        flex: 1 1 0%;
+        min-height: 120px;
+    }
+
+    @keyframes fade-in {
+        0% { opacity: 0; }
+        100% { opacity: 1; }
     }
 
     .project-showcase-content {
+        position: relative;
         width: 900px;
-        margin: auto;
+        max-width: calc(100% - 32px); /* Keeps it responsive on smaller screens */
+        flex-shrink: 0; /* Prevents the modal from getting squished */
 
         border-radius: 12px;
         background: rgb(30, 30, 30);
         border: 1px solid rgb(255, 255, 255, 0.1);
 
+        cursor: pointer;
+
         padding: 12px;
         box-sizing: border-box;
+        margin-bottom: 120px;
+
+        animation: slide-up 0.5s !important;
+    }
+
+    @keyframes slide-up {
+        0% {
+            transform: translateY(100%);
+        }
+
+        100% {
+            transform: translateY(0%);
+        }
     }
 
     .close-showcase {
-        display: flex;
-        justify-content: right;
-        z-index: 5;
+        position: absolute;
+        right: 0;
+        margin-right: 8px;
+        cursor: pointer;
     }
 
     .close-showcase svg {
         display: flex;
     }
 
-    .seperator {
-        height: 10px;
+    .inner-preview-container {
+        height: 200px;
         width: 100%;
-        background-color: red;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+            height: 100%;
+            border-radius: 12px;
+        }
     }
 
     .inner.description {
@@ -128,10 +180,17 @@ const { title, desc, preview } = Astro.props
 </style>
 
 <script>
-    const project = document.getElementsByClassName("project")[0]
-    const projectShowcase = document.getElementsByClassName("project-showcase")[0]
+    document.querySelectorAll(".project").forEach((project) => {
+        const preview = project.querySelector(".preview-container");
+        const showcase = project.querySelector(".project-showcase");
+        const closeBtn = project.querySelector(".close-showcase svg");
 
-    project.addEventListener("click", () => {
-        projectShowcase.classList.toggle("visible")
-    })
+        preview?.addEventListener("click", () => {
+            showcase?.classList.toggle("visible");
+        });
+
+        closeBtn?.addEventListener("click", () => {
+            showcase?.classList.toggle("visible");
+        });
+    });
 </script>
