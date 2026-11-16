@@ -1,7 +1,7 @@
 ---
 enabled: true
 title: "Sapphire"
-desc: "GUI-based moderation suite for minecraft servers."
+desc: "GUI-based moderation suite for Minecraft servers."
 preview: "sapphire.png"
 links: {
     "github": "https://github.com/Nebulations/Sapphire",
