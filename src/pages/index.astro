@@ -1,45 +1,91 @@
 ---
-import Navbar from '../components/Navbar.astro';
-import Socials from '../components/Socials.astro'
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout>
-	<Navbar />
-	<div class="main-container">
-		<div class="inner-container">
-			
+<Layout tab="Home">
+	<div class="profile-container">
+		<div class="profile">
+			<h1>Nebula — Java Developer</h1>
+			<p>I currently build backend services in Java with Spring Boot, and I enjoy picking up new technologies along the way. This website tracks my work and shows my growth over the years.</p>
+			<p>I'm open to junior roles and new opportunities.</p>
+			<br>
+			<div class="buttons">
+				<div class="button" onclick="window.location.href = '/projects'">View my projects</div>
+				<div class="button reversed" onclick="window.location.href = 'mailto:contact@nebu.me'">Email me</div>
+			</div>
 		</div>
 	</div>
-
-	<Socials />
 </Layout>
 
 <style>
-	.main-container {
-		position: relative;
-		height: 70%;
+	.profile-container {
+		height: 100%;
 		width: 100%;
-		background: rgb(12, 12, 12);
-		border-radius: 0 0 20% 20%;
-		overflow: hidden;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
 
-    /* Apply dots to background */
-	.main-container::before {
-		content: "";
-		position: absolute;
-		inset: 0;
-		background-image: radial-gradient(rgb(40, 40, 40) 20%, transparent 21%);
-		background-size: 10px 10px;
-		mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.1) 100%);
-		-webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.1) 100%);
-		pointer-events: none;
-		z-index: 0;
+	.profile {
+		color: #fff;
+        padding: 16px;
+        border-radius: 12px;
+        background: rgb(20, 20, 20);
+        border: 1px solid rgb(255, 255, 255, 0.1);
+		max-width: 600px;
+
+		/* Make it centered despite the navbar */
+		margin-top: -80px;
+
+		animation: slide-up 1s;
 	}
 
-	.inner-container {
-		position: relative;
-		z-index: 1;
+	@keyframes slide-up {
+		0% {
+			opacity: 0;
+			transform: translateY(40%);
+		}
+
+		100% {
+			opacity: 1;
+			transform: translateY(0%);
+		}
+	}
+
+	p {
+		margin: 12pt 0px;
+		color: rgb(200, 200, 200);
+		font-size: 13pt;
+	}
+
+	.buttons {
+		display: flex;
+		gap: 1rem;
+	}
+
+	.button {
+		text-decoration: none;
+		color: #000;
+		border: 2px solid rgb(235, 235, 235);
+		background-color: rgb(235, 235, 235);
+		font-weight: 600;
+		padding: 12px;
+		border-radius: 12px;
+		width: fit-content;
+	}
+
+	.button:hover {
+		cursor: pointer;
+	}
+
+	.button.reversed {
+		border: 2px solid rgb(255, 255, 255, 0.1);
+		background-color: rgb(20, 20, 20);
+		color: #fff;
+		transition: ease-in-out 0.2s;
+	}
+
+	.button.reversed:hover {
+		background: rgb(30, 30, 30);
 	}
 </style>

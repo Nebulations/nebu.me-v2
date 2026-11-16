@@ -1,14 +1,33 @@
+---
+const path = Astro.url.pathname;
+const isActive = (href: string) => href === "/" ? path === "/" : path.startsWith(href);
+
+const links = [
+    { label: "Home", href: "/", id: "home" },
+    { label: "Projects", href: "/projects", id: "projects" },
+    // { label: "Timeline", href: "/timeline", id: "timeline" },
+];
+---
+
 <nav>
     <ul>
-        <li class="navigation"><a class="navigation-link" href="/">Home</a></li>
-        <li class="navigation"><a class="navigation-link" href="/projects">Projects</a></li>
-        <li class="navigation"><a class="navigation-link" href="/timeline">Timeline</a></li>
+        {links.map(link => (
+            <li class="navigation">
+                <a
+                    class="navigation-link"
+                    href={link.href}
+                    aria-current={isActive(link.href) ? "page" : undefined}
+                >
+                    {link.label}
+                </a>
+            </li>
+        ))}
     </ul>
 </nav>
 
 <style>
     nav {
-        position: absolute;
+        position: sticky;
         z-index: 1;
         top: 0;
         width: 100%;
@@ -52,6 +71,11 @@
     }
 
     .navigation:hover > .navigation-link {
+        color: rgb(235, 235, 235);
+    }
+
+    .navigation-link:hover,
+    .navigation-link[aria-current="page"] {
         color: rgb(235, 235, 235);
     }
 

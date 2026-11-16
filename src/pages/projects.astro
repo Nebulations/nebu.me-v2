@@ -1,65 +1,33 @@
 ---
-import Navbar from '../components/Navbar.astro';
 import Project from '../components/Project.astro';
-import Socials from '../components/Socials.astro';
 import Layout from '../layouts/Layout.astro';
 
 // Handling project loading
 const projects = Object.values(import.meta.glob("../projects/*.md", { eager: true }))
 ---
 
-<Layout>
-	<Navbar />
-	<div class="main-container">
-		<div class="content">
-			<div class="projects">
-				{projects.map((project: any) => (
-					<Project
-						title={project.frontmatter.title}
-						desc={project.frontmatter.desc}
-						preview={project.frontmatter.preview}>
-							<project.Content />
-					</Project>
-				))}
-			</div>
-		</div>
-	</div>
+<Layout tab="Projects">
+	<div class="projects">
+		{projects.map((project: any) => {
 
-	<Socials />
+			if (!project.frontmatter.enabled) {
+				return
+			}
+
+			return (
+				<Project
+					title={project.frontmatter.title}
+					desc={project.frontmatter.desc}
+					preview={project.frontmatter.preview}>
+						<project.Content />
+				</Project>
+			)
+		})}
+	</div>
 </Layout>
 
 <style>
-	.main-container {
-		position: relative;
-		width: 100%;
-		background: rgb(12, 12, 12);
-		border-radius: 0 0 20% 20%;
-		overflow: hidden;
-	}
-
-	.main-container::before {
-		content: "";
-		position: absolute;
-		inset: 0;
-		background-image: radial-gradient(rgb(40, 40, 40) 20%, transparent 21%);
-		background-size: 10px 10px;
-		mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.1) 100%);
-		-webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.1) 100%);
-		pointer-events: none;
-		z-index: 0;
-	}
-
-	.content {
-		position: relative;
-		z-index: 1;
-		display: flex;
-		justify-content: center;
-
-		margin-top: 120px;
-	}
-
 	.projects {
-		margin-bottom: 60px;
 		width: 80%;
 
 		display: flex;
@@ -67,5 +35,6 @@ const projects = Object.values(import.meta.glob("../projects/*.md", { eager: tru
 		align-items: center;
 		flex-wrap: wrap;
 		gap: 0rem;
+		margin: 60px auto;
 	}
 </style>
