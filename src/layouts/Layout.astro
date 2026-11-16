@@ -11,7 +11,14 @@ const { tab } = Astro.props
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" href="/favicon.ico" />
-		<title>Nebula — Java Developer</title>
+		<title>Nebula — {tab}</title>
+
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content="Nebula" />
+		<meta property="og:title" content="Nebula — Java Developer" />
+		<meta property="og:description" content="Nebula's portfolio website" />
+		<meta property="og:url" content="https://nebu.me" />
+		<meta property="og:image" content="/favicon.ico" />
 	</head>
 	<body>
 		<Navbar tab={tab} />
