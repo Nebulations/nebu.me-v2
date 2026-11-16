@@ -1,8 +1,8 @@
 ---
 enabled: true
-title: "Parmesan (OS)"
+title: "Parmesan"
 desc: "A basic 32-bit operating system built entirely in C."
-preview: "example.gif"
+preview: "parmesan.png"
 links: {
     "github": "https://github.com/Nebulations/parmesan"
 }
