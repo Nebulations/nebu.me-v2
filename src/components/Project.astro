@@ -35,7 +35,7 @@ const { title, desc, preview } = Astro.props
         border: 1px solid rgb(255, 255, 255, 0.1);
 
         height: 400px;
-        width: 600px;
+        min-width: 600px;
 
         transition: ease-in-out 0.2s;
 
@@ -182,11 +182,47 @@ const { title, desc, preview } = Astro.props
     .inner.description {
         margin-bottom: 16px;
         padding-bottom: 16px;
-        border-bottom: 1px solid rgb(255, 255, 255, 0.1);
     }
 
     .project-showcase-text {
+        margin: auto;
+        width: 90%;
         color: rgb(235, 235, 235);
+
+        h1,h2,h3 {
+            border-bottom: 1px solid rgb(255, 255, 255, 0.1);
+        }
+
+        h1,h2,h3,h4,h5,h6 {
+            margin-top: 16px;
+            margin-bottom: 8px;
+        }
+
+        p, li {
+            font-size: 14pt;
+        }
+
+        ul, ol {
+            margin-left: 20px;
+        }
+
+        code {
+            color: #ff7ac6;
+            background: rgb(255 122 198 / 0.1);
+            border: 0;
+            padding: 0.1em 0.4em;
+            border-radius: 6px;
+            font-size: 0.9em;
+        }
+
+        padding-bottom: 24px;
+    }
+
+    @media screen and (max-width: 640px) {
+        .project {
+            scale: 0.7;
+            margin: 0px;
+        }
     }
 </style>
 
