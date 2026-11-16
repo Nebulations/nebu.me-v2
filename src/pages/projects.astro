@@ -15,11 +15,8 @@ const projects = Object.values(import.meta.glob("../projects/*.md", { eager: tru
 			}
 
 			return (
-				<Project
-					title={project.frontmatter.title}
-					desc={project.frontmatter.desc}
-					preview={project.frontmatter.preview}>
-						<project.Content />
+				<Project data={project.frontmatter}>
+					<project.Content />
 				</Project>
 			)
 		})}

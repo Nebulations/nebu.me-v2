@@ -5,7 +5,7 @@ desc: "GUI-based moderation suite for minecraft servers."
 preview: "sapphire.png"
 links: {
     "github": "https://github.com/Nebulations/Sapphire",
-    "install": "https://builtbybit.com/resources/sapphire-gui-driven-moderation-suite.111536"
+    "download": "https://builtbybit.com/resources/sapphire-gui-driven-moderation-suite.111536"
 }
 ---
 
