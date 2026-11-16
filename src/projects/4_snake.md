@@ -7,3 +7,4 @@ links: {
     "github": "https://github.com/Nebulations/terminal_snake"
 }
 ---
+No project information available.
