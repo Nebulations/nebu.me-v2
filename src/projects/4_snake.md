@@ -7,4 +7,7 @@ links: {
     "github": "https://github.com/Nebulations/terminal_snake"
 }
 ---
-No project information available.
+# Overview
+**Goal:** Learn how to code in Python
+<br><br>
+This is a dead simple project. Nothing major going on; just a regular snake game running inside of the terminal.
